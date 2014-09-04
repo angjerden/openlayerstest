@@ -1,0 +1,4 @@
+openlayerstest
+==============
+
+Testing Openlayers.js

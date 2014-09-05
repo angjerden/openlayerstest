@@ -9,7 +9,29 @@
         var map = new OpenLayers.Map('map');
         var wms = new OpenLayers.Layer.WMS("OpenLayers.WMS",
             "http://vmap0.tiles.osgeo.org/wms/vmap0", {layers: 'basic'});
+
+        var dm_wms = new OpenLayers.Layer.WMS(
+                "Canadian Data",
+                "http://www2.dmsolutions.ca/cgi-bin/mswms_gmap",
+                {
+                    layers: "bathymetry,land_fn,park,drain_fn,drainage," +
+                            "prov_bound,fedlimit,rail,road,popplace",
+                    transparent: "false",
+                    format: "image/png"
+                },
+                {isBaseLayer: false}
+        );
+        //map.addLayers([wms, dm_wms]);
         map.addLayer(wms);
+
+        var vectorLayer = new OpenLayers.Layer.Vector("Overlay");
+        var feature = new OpenLayers.Feature.Vector(
+                new OpenLayers.Geometry.Point(-71, 42),
+                {some:'data'},
+                {externalGraphic: 'marker.png', graphicHeight: 21, graphicWidth: 16});
+        vectorLayer.addFeatures(feature);
+        map.addLayer(vectorLayer);
+
         map.zoomToMaxExtent();
     </script>
 </body>

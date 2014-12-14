@@ -1,0 +1,22 @@
+<html>
+<head>
+    <script type="text/javascript" src="http://openlayers.org/api/OpenLayers.js"></script>
+    <script type="text/javascript">
+        var map;
+
+        function init() {
+            map = new OpenLayers.Map('map');
+            var wms = new OpenLayers.Layer.WMS(
+                    "OpenLayers WMS",
+                    "http://vmap0.tiles.osgeo.org/wms/vmap0",
+                    {layers: 'basic,ground_01'},
+                    {projection: new OpenLayers.Projection('4326')}
+            );
+            map.addLayers([wms]);
+            map.zoomToMaxExtent();
+        }
+    </script>
+</head>
+<body onload="init()">
+<div id="map" style="width: 600px; height: 300px"></div>
+</body>

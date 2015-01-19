@@ -1,12 +1,13 @@
 <html>
 <head>
     <title>OpenLayers Example</title>
-    <script src="OpenLayers.js"></script>
+    <!-- <script src="OpenLayers.js"></script> -->
+	<script src="http://cdnjs.cloudflare.com/ajax/libs/openlayers/2.11/OpenLayers.js"></script>
     <link href="theme/default/style.css" rel="stylesheet">
 </head>
 <body>
     <div style="width:100%; height:50%;" id="map"></div>
-    <div style="width:100%; height:50%;" id="europe_map"></div>
+    <!-- <div style="width:100%; height:50%;" id="europe_map"></div> -->
     <script defer="defer" type="text/javascript">
         var bounds = new OpenLayers.Bounds(-1716034, 6180920, 2749458, 8303992);
 
@@ -36,15 +37,15 @@
         //map.addLayer(wms);
 
         var geonorge_wms = new OpenLayers.Layer.WMS(
-                "Topo2",
-                "http://openwms.statkart.no/skwms1/wms.topo2",
+                "Topo2 Graatone",
+                "http://openwms.statkart.no/skwms1/wms.topo2.graatone?",
                 {
-                    layers: "Hoydelag",
+                    layers: "topo2_graatone_WMS",
                     format: "image/png"
                 }
         );
 
-        //map.addLayer(geonorge_wms);
+        map.addLayer(geonorge_wms);
 
         var europakart_wms = new OpenLayers.Layer.WMS(
                 "Europakart",

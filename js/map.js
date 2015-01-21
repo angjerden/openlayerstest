@@ -23,6 +23,12 @@ var feature = new OpenLayers.Feature.Vector(
 vectorLayer.addFeatures(feature);
 map.addLayer(vectorLayer);
 
+var pointFeature = new OpenLayers.Feature.Vector(
+        new OpenLayers.Geometry.Point(7, 7),
+        {data:'this is just a point'});
+
+vectorLayer.addFeatures(pointFeature);
+
 vectorLayer.events.register('featureclick', null, layerListeners.featureclick);
 vectorLayer.events.register('nofeatureclick', null, layerListeners.nofeatureclick);
 
@@ -75,3 +81,11 @@ var feature2 = new OpenLayers.Feature.Vector(
         {externalGraphic: 'marker.png', graphicHeight: 40, graphicWidth: 33});
 
 vectorLayer.addFeatures(feature2);
+
+var selectControlOptions = {
+    map: this
+};
+
+var selectControl = new SelectElement(vectorLayer, selectControlOptions);
+selectControl.activate();
+map.addControl(selectControl);

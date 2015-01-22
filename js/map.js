@@ -86,7 +86,8 @@ var selectControlOptions = {
     map: this
 };
 
-var selectControl = new SelectElement(vectorLayer, selectControlOptions);
+//var selectControl = new SelectElement(vectorLayer, selectControlOptions);
+var selectControl = new SelectElement(vectorLayer);
 map.addControl(selectControl); //add control to the map before activating it
 selectControl.activate();
 

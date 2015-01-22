@@ -3,7 +3,9 @@ SelectElement = OpenLayers.Class(OpenLayers.Control.SelectFeature, {
     map: null,
     initialize: function (layer, options) {
         this.layer = layer;
-        this.map = options.map;
+        if (options) {
+            this.map = options.map;
+        }
         OpenLayers.Control.SelectFeature.prototype.initialize.apply(this, [layer]);
     },
 

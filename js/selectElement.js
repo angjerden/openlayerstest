@@ -4,8 +4,10 @@ SelectElement = OpenLayers.Class(OpenLayers.Control.SelectFeature, {
     logmessage: null,
     initialize: function (layer, options) {
         this.layer = layer;
-        this.map = options.map;
-        this.logmessage = options.logmessage;
+        if (options) {
+            this.map = options.map;
+            this.logmessage = options.logmessage;
+        }
         OpenLayers.Control.SelectFeature.prototype.initialize.apply(this, [layer]);
     },
 

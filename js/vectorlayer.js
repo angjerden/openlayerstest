@@ -67,13 +67,14 @@ vectorLayer.addFeatures(feature2);
 //  Layer events
 //================================================================================
 var layerListeners = {
-    featureclick: function(e) {
-        console.log(e.object.name + " says: " + e.feature.id + " clicked. Data: " + e.feature.data.data);
+    featureselected: function(e) {
+        console.log(e.object.name + " says: " + e.feature.id + " selected. Data: " + e.feature.data.data);
         return false;
     },
-    nofeatureclick: function(e) {
-        console.log(e.object.name + " says: No feature clicked.");
+    featureunselected: function(e) {
+        console.log(e.object.name + " says: No feature selected.");
     }
 };
-vectorLayer.events.register('featureclick', null, layerListeners.featureclick);
-vectorLayer.events.register('nofeatureclick', null, layerListeners.nofeatureclick);
+vectorLayer.events.register('featureselected', null, layerListeners.featureselected);
+vectorLayer.events.register('featureunselected', null, layerListeners.featureunselected);
+

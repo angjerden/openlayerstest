@@ -9,7 +9,7 @@ var markerFeature = new OpenLayers.Feature.Vector(
 vectorLayer.addFeatures(markerFeature);
 
 var pointFeature = new OpenLayers.Feature.Vector(
-        new OpenLayers.Geometry.Point(initlon + 1, initlat + 1),
+        new OpenLayers.Geometry.Point(initlon + 0.4, initlat + 0.4),
         {data:'this is just a point'});
 
 vectorLayer.addFeatures(pointFeature);
@@ -45,7 +45,7 @@ var points2 = [
 
 var linearRing = new OpenLayers.Geometry.LinearRing(points2);
 var polygon = new OpenLayers.Geometry.Polygon([linearRing]);
-var polygonFeature = new OpenLayers.Feature.Vector(polygon);
+var polygonFeature = new OpenLayers.Feature.Vector(polygon, {data: 'i am a polygon'});
 
 vectorLayer.addFeatures(polygonFeature);
 

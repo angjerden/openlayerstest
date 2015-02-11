@@ -1,19 +1,46 @@
-var initlon = 5.7;
-var initlat = 58.9;
+var initlon = -33000;
+var initlat = 6559000;
 
 var initpoint = new OpenLayers.LonLat(initlon, initlat);
-var initzoom = 9;
+var initzoom = 8;
 
-var map = new OpenLayers.Map('map');
-var wms = new OpenLayers.Layer.WMS( "OpenLayers WMS",
-    "http://vmap0.tiles.osgeo.org/wms/vmap0", {layers: 'basic'} );
-map.addLayers([wms]);
+var mapoptions = {
+      projection: new OpenLayers.Projection('EPSG:32633'),
+      maxExtent: new OpenLayers.Bounds(-2500000.0,3500000.0,3045984.0,9045984.0),
+      units: "m",
+      maxResolution: 2708.0, // tilsvarer zoom level 3 (hele er 21664.0)
+      numZoomLevels: 18 // egentlig 21, men maxResolution tilsvarer zoom level 3 (følgelig er 0-3 skrudd av)
+};
+
+var map = new OpenLayers.Map('map', mapoptions);
+
+map.addControl(new OpenLayers.Control.LayerSwitcher());
+
+var topo2 = new OpenLayers.Layer.WMS(
+"Topografisk norgeskart2",'http://opencache.statkart.no/gatekeeper/gk/gk.open?',
+  {
+layers: 'topo2',
+format: 'image/jpeg'
+},
+  {attribution:'<a href="http://www.statkart.no">Statens kartverk</a>, <a href="http://www.statkart.no/nor/Land/Fagomrader/Geovekst/">Geovekst</a> og <a href="http://www.statkart.no/?module=Articles;action=Article.publicShow;ID=14194">kommuner</a>'}
+);
+
+var topo2graatone = new OpenLayers.Layer.WMS(
+    "Topografisk norgeskart2 graatone",
+    'http://opencache.statkart.no/gatekeeper/gk/gk.open?',
+    {
+        layers: 'topo2graatone',
+        format: 'image/png'
+    }
+);
+
+map.addLayers([topo2graatone, topo2]);
 map.setCenter(initpoint, initzoom);
 
 var mousePositionControl = new OpenLayers.Control.MousePosition(
     {
-        prefix: '<a href="http://spatialreference.org/ref/epsg/4326/">' +
-            'EPSG:4326</a> coordinates: ',
+        prefix: '<a href="http://spatialreference.org/ref/epsg/32633/">' +
+            'EPSG:32633</a> coordinates: ',
         separator: ' , ',
         numDigits: 2,
         emptyString: 'N/A'

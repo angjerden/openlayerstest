@@ -2,14 +2,14 @@
 //  Point feature
 //================================================================================
 var markerFeature = new OpenLayers.Feature.Vector(
-        new OpenLayers.Geometry.Point(-71, 42),
+        new OpenLayers.Geometry.Point(initlon - 2000, initlat + 2000),
         {data:'some data'},
         {externalGraphic: 'marker.png', graphicHeight: 80, graphicWidth: 70});
 
 vectorLayer.addFeatures(markerFeature);
 
 var pointFeature = new OpenLayers.Feature.Vector(
-        new OpenLayers.Geometry.Point(initlon + 0.4, initlat + 0.4),
+        new OpenLayers.Geometry.Point(initlon + 800, initlat + 800),
         {data:'this is just a point'});
 
 vectorLayer.addFeatures(pointFeature);
@@ -19,10 +19,10 @@ vectorLayer.addFeatures(pointFeature);
 //================================================================================
 
 var points = [
-    new OpenLayers.Geometry.Point(initlon + 0.5, initlat + 0.5),
-    new OpenLayers.Geometry.Point(initlon + 1, initlat + 2 ),
-    new OpenLayers.Geometry.Point(initlon + 2, initlat - 0.3 ),
-    new OpenLayers.Geometry.Point(initlon -1, initlat + 0.2)
+    new OpenLayers.Geometry.Point(initlon + 500, initlat + 500),
+    new OpenLayers.Geometry.Point(initlon + 100, initlat + 200 ),
+    new OpenLayers.Geometry.Point(initlon + 200, initlat - 300 ),
+    new OpenLayers.Geometry.Point(initlon -100, initlat + 200)
 ];
 
 var linestringFeature = new OpenLayers.Feature.Vector(
@@ -37,10 +37,10 @@ vectorLayer.addFeatures(linestringFeature);
 //================================================================================
 
 var points2 = [
-    new OpenLayers.Geometry.Point(initlon + 0.3, initlat + 0.3),
-    new OpenLayers.Geometry.Point(initlon + 0.3, initlat + 0.15),
-    new OpenLayers.Geometry.Point(initlon + 0.15, initlat + 0.15),
-    new OpenLayers.Geometry.Point(initlon + 0.15, initlat + 0.3)
+    new OpenLayers.Geometry.Point(initlon + 600, initlat + 600),
+    new OpenLayers.Geometry.Point(initlon + 600, initlat + 300),
+    new OpenLayers.Geometry.Point(initlon + 300, initlat + 300),
+    new OpenLayers.Geometry.Point(initlon + 300, initlat + 600)
 ];
 
 var linearRing = new OpenLayers.Geometry.LinearRing(points2);

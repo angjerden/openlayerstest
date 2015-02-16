@@ -4,7 +4,7 @@
 var markerFeature = new OpenLayers.Feature.Vector(
         new OpenLayers.Geometry.Point(initlon - 2000, initlat + 2000),
         {data:'some data'},
-        {externalGraphic: 'marker.png', graphicHeight: 80, graphicWidth: 70});
+        {externalGraphic: 'marker.png', graphicHeight: 40, graphicWidth: 30});
 
 vectorLayer.addFeatures(markerFeature);
 

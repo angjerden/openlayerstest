@@ -19,24 +19,36 @@ var map = new OpenLayers.Map('map', mapoptions);
 //================================================================================
 // Creating WMS layers
 //================================================================================
+var opencacheUrl = 'http://opencache.statkart.no/gatekeeper/gk/gk.open?';
+
 var topo2 = new OpenLayers.Layer.WMS(
-"Topografisk norgeskart2",'http://opencache.statkart.no/gatekeeper/gk/gk.open?',
-  {
-layers: 'topo2',
-format: 'image/jpeg'
-},
-  {attribution:'<a href="http://www.statkart.no">Statens kartverk</a>, <a href="http://www.statkart.no/nor/Land/Fagomrader/Geovekst/">Geovekst</a> og <a href="http://www.statkart.no/?module=Articles;action=Article.publicShow;ID=14194">kommuner</a>'}
+    "Topografisk norgeskart2",
+    opencacheUrl,
+    {
+        layers: 'topo2',
+        format: 'image/jpeg'
+    },
+    {attribution:'<a href="http://www.statkart.no">Statens kartverk</a>, <a href="http://www.statkart.no/nor/Land/Fagomrader/Geovekst/">Geovekst</a> og <a href="http://www.statkart.no/?module=Articles;action=Article.publicShow;ID=14194">kommuner</a>'}
 );
 
 var topo2graatone = new OpenLayers.Layer.WMS(
     "Topografisk norgeskart2 graatone",
-    'http://opencache.statkart.no/gatekeeper/gk/gk.open?',
+    opencacheUrl,
     {
         layers: 'topo2graatone',
         format: 'image/png'
     }
 );
-map.addLayers([topo2graatone, topo2]);
+
+var terreng = new OpenLayers.Layer.WMS(
+    "Terreng Norgeskart",
+    opencacheUrl,
+    {
+        layers: 'terreng_norgeskart',
+        format: 'image/png'
+    }
+);
+map.addLayers([topo2graatone, topo2, terreng]);
 
 //================================================================================
 // Creating Vector layers

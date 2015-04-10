@@ -68,11 +68,12 @@ var sld;
 var sldCallback = function (req) {
     sld = format.read(req.responseXML || req.responseText);
 
-    var layerName = "Rogalandlayer";
-    var layerStyles = sld.namedLayers[layerName].userStyles;
-    for (var j = 0; j < layerStyles.length; j++) {
-        var style = layerStyles[j];
-        map.getLayersByName(layerName)[0].styleMap.styles[style.name] = style;
+    for (layerName in sld.namedLayers) {
+        var layerStyles = sld.namedLayers[layerName].userStyles;
+        for (var j = 0; j < layerStyles.length; j++) {
+            var style = layerStyles[j];
+            map.getLayersByName(layerName)[0].styleMap.styles[style.name] = style;
+        }
     }
 };
 

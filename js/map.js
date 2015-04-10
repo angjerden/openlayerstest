@@ -59,6 +59,24 @@ var rogalandLayer = new OpenLayers.Layer.Vector("Rogalandlayer");
 map.addLayer(rogalandLayer);
 
 //================================================================================
+// Styling layers
+//================================================================================
+var format = new OpenLayers.Format.SLD();
+var sldUrl = "style/default.sld";
+var sld;
+
+var sldCallback = function (req) {
+    sld = format.read(req.responseXML || req.responseText);
+
+    var layerName = "Rogalandlayer";
+    var layerStyles = sld.namedLayers[layerName].userStyles;
+    for (var j = 0; j < layerStyles.length; j++) {
+        var style = layerStyles[j];
+        map.getLayersByName(layerName)[0].styleMap.styles[style.name] = style;
+    }
+};
+
+//================================================================================
 // Creating SelectElement (SelectFeature) Control
 //================================================================================
 var selectControlOptions = {
@@ -135,3 +153,6 @@ panel.addControls([
 map.addControl(panel);
 
 map.setCenter(initpoint, initzoom);
+
+//styling
+OpenLayers.Request.GET({ url: sldUrl, callback: sldCallback});

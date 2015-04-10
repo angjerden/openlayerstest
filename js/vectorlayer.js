@@ -19,10 +19,10 @@ vectorLayer.addFeatures(pointFeature);
 //================================================================================
 
 var points = [
-    new OpenLayers.Geometry.Point(initlon + 500, initlat + 500),
-    new OpenLayers.Geometry.Point(initlon + 100, initlat + 200 ),
-    new OpenLayers.Geometry.Point(initlon + 200, initlat - 300 ),
-    new OpenLayers.Geometry.Point(initlon -100, initlat + 200)
+    new OpenLayers.Geometry.Point(initlon + 1500, initlat + 500),
+    new OpenLayers.Geometry.Point(initlon + 1100, initlat + 200 ),
+    new OpenLayers.Geometry.Point(initlon + 1200, initlat - 300 ),
+    new OpenLayers.Geometry.Point(initlon + 900, initlat + 200)
 ];
 
 var linestringFeature = new OpenLayers.Feature.Vector(

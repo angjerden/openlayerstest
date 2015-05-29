@@ -118,7 +118,6 @@ map.addControl(mousePositionControl);
 var scaleLine = new OpenLayers.Control.ScaleLine();
 map.addControl(scaleLine);
 
-
 //================================================================================
 // Creating a Panel Control
 //================================================================================
@@ -157,3 +156,15 @@ map.setCenter(initpoint, initzoom);
 
 //styling
 OpenLayers.Request.GET({ url: sldUrl, callback: sldCallback});
+
+//================================================================================
+// Pop up (must be added after map.setCenter()
+//================================================================================
+
+var popup = new OpenLayers.Popup("chicken",
+        new OpenLayers.LonLat(initlon + 300, initlat + 300),
+        new OpenLayers.Size(200, 200),
+        "example popup",
+        true);
+
+map.addPopup(popup);
